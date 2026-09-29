@@ -1,58 +1,92 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MedDesk — Sistema de Gestão para Clínicas
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> 🚧 **Projeto em desenvolvimento.** Algumas funcionalidades já estão prontas e outras ainda estão em construção. Veja abaixo o que já foi implementado e o que vem a seguir.
 
-## About Laravel
+Sistema web para gestão de clínicas com uma ou mais unidades, focado em cadastro de pacientes e profissionais, estrutura física, tabela de preços e pacotes de atendimento. O projeto já inclui dados de exemplo para uma clínica multidisciplinar de atendimento ao TEA (Transtorno do Espectro Autista).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Desenvolvido com **Laravel 13**, **Livewire 3** e **PostgreSQL**.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Funcionalidades
 
-## Learning Laravel
+### ✅ Já implementado
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Pacientes**
+- Listagem, cadastro e edição de pacientes com dados pessoais, contato e endereço
+- Ficha do paciente organizada em abas: dados gerais, agenda, atendimentos, prontuário, anotações, documentos, financeiro e linha do tempo
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Profissionais**
+- Cadastro completo de profissionais, com especialidades e tipo de vínculo
+- Definição dos dias de atendimento em cada unidade
+- Página de detalhes do profissional
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+**Multiunidade**
+- Cadastro de unidades (matriz e filiais)
+- Seletor de filial ativa: o usuário alterna a unidade e os dados são filtrados automaticamente
 
-## Agentic Development
+**Configurações**
+- Especialidades vinculadas a uma ou mais unidades
+- Salas por unidade, com tipo, capacidade e cor de identificação
+- Tabela de preços por especialidade, com duração do atendimento e valor por unidade
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+**Financeiro**
+- Pacotes de atendimento com valor bruto, desconto (percentual ou fixo), valor final e validade
+
+### 🔜 Em desenvolvimento
+
+- Agendamento de consultas e terapias
+- Registro de atendimentos e prontuário eletrônico
+- Upload e gestão de documentos do paciente
+- Cobranças e integração com convênios
+- Autenticação e perfis de acesso
+- Testes automatizados
+- Ambiente em Docker
+
+---
+
+## Tecnologias
+
+| Camada | Tecnologias |
+|---|---|
+| Back-end | PHP 8.3, Laravel 13, Livewire 3 |
+| Front-end | Blade, Tailwind CSS 4, Vite, Lucide Icons |
+| Banco de dados | PostgreSQL |
+| Qualidade | Pest, Laravel Pint |
+| Idioma | Interface e validações em português (pt_BR) |
+
+---
+
+## Como rodar
+
+**Pré-requisitos:** PHP 8.3+, Composer, Node.js e PostgreSQL.
 
 ```bash
-composer require laravel/boost --dev
+# 1. Clonar o repositório
+git clone https://github.com/DevLucassousa25/meddesk.git
+cd meddesk
 
-php artisan boost:install
+# 2. Instalar dependências
+composer install
+npm install
+
+# 3. Configurar o ambiente
+cp .env.example .env
+php artisan key:generate
+# Ajuste DB_DATABASE, DB_USERNAME e DB_PASSWORD no .env
+
+# 4. Criar as tabelas e popular com dados de exemplo
+php artisan migrate --seed
+
+# 5. Subir a aplicação
+composer run dev
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Acesse em **http://localhost:8000**.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Autor
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Lucas Sousa** — Desenvolvedor Full Stack
+[LinkedIn](https://www.linkedin.com/in/lucas-sousa-a10474212/) · [GitHub](https://github.com/DevLucassousa25)
